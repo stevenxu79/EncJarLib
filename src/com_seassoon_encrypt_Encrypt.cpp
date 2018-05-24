@@ -63,14 +63,23 @@ JNIEXPORT jbyteArray JNICALL Java_com_seassoon_encrypt_Encrypt_encrypt(
 	if (flag) {
 		cout << "Key is right" << endl;
 		char* dst = (char*) _env->GetByteArrayElements(_buf, 0);
-//		char* encData = encode(dst);
 
-		int encKeyLen = strlen(contEncKey);
-
+		//1.使用固定密钥加密
+//		int encKeyLen = strlen(contEncKey);
+//		for (int i = 0; i < len; i++) {
+//			for (int j = 0; j < encKeyLen; j++) {
+//				char keychar = contEncKey[j];
+//				dst[i] = dst[i] - keychar + 9;//先改变内容
+//				dst[i] = dst[i] ^ keychar;
+//
+//			}
+//		}
+		//2.使用传入密钥加密或者从数据库获取密钥加密;
+		int keyDeLen = strlen(keyDe);
 		for (int i = 0; i < len; i++) {
-			for (int j = 0; j < encKeyLen; j++) {
-				char keychar = contEncKey[j];
-				dst[i] = dst[i] - keychar + 9;//先改变内容
+			for (int j = 0; j < keyDeLen; j++) {
+				char keychar = keyDe[j];
+				dst[i] = dst[i] - keychar + 9;		//先改变内容
 				dst[i] = dst[i] ^ keychar;
 
 			}
@@ -119,13 +128,22 @@ JNIEXPORT jbyteArray JNICALL Java_com_seassoon_encrypt_Encrypt_decrypt(
 	if (flag) {
 		cout << "Key is right" << endl;
 		char* dst = (char*) _env->GetByteArrayElements(_buf, 0);
-//		char* encData = encode(dst);
-		int encKeyLen = strlen(contEncKey);
+		//1.使用固定密钥加密
+//		int encKeyLen = strlen(contEncKey);
+//		for (int i = 0; i < len; i++) {
+//			for (int j = encKeyLen; j > 0; j--) {
+//				char keychar = contEncKey[j - 1];
+//				dst[i] = dst[i] ^ keychar;
+//				dst[i] = dst[i] + keychar - 9;		//恢复内容
+//			}
+//		}
+		//2.使用传入密钥加密或者从数据库获取密钥加密;
+		int keyDeLen = strlen(keyDe);
 		for (int i = 0; i < len; i++) {
-			for (int j = encKeyLen; j >0 ; j--) {
-				char keychar = contEncKey[j-1];
+			for (int j = keyDeLen; j > 0; j--) {
+				char keychar = contEncKey[j - 1];
 				dst[i] = dst[i] ^ keychar;
-				dst[i] = dst[i] + keychar - 9;//恢复内容
+				dst[i] = dst[i] + keychar - 9;		//恢复内容
 			}
 		}
 
