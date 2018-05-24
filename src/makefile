@@ -12,7 +12,7 @@ ifeq ($(shell uname), Darwin)
   INCLUDEDIR = -I/System/Library/Frameworks/JavaVM.framework/Headers
 endif
 
-OBJS = decrypt.o
+OBJS = decrypt.o com_seassoon_encrypt_Encrypt.o
 
 $(TARGET):$(OBJS)
 	$(CC) $(LIBLINK) -o $(TARGET) $(OBJS)
@@ -20,6 +20,9 @@ $(TARGET):$(OBJS)
 decrypt.o: decrypt.cpp
 	$(CC) $(INCLUDEDIR) -c decrypt.cpp
 
+com_seassoon_encrypt_Encrypt.o: com_seassoon_encrypt_Encrypt.cpp com_seassoon_encrypt_Encrypt.h
+	$(CC) $(INCLUDEDIR) -c com_seassoon_encrypt_Encrypt.cpp
+	
 .PHONY:clean
 clean:
 	rm $(TARGET) $(OBJS)
