@@ -2,7 +2,7 @@ ifeq ($(shell uname), Linux)
   CC         = g++ -fPIC 
   LIBLINK    = -shared 
   INCLUDEDIR = -I /opt/jdk1.8.0_111/include -I /opt/jdk1.8.0_111/include/linux
-  TARGET     = libdecrypt.so
+  TARGET     = libencrypt.so
 endif
 
 ifeq ($(shell uname), Darwin)

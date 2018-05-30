@@ -23,10 +23,10 @@ JNIEXPORT jbyteArray JNICALL Java_com_seassoon_encrypt_Encrypt_genEncKey
  * Signature: ([B[B)[B
  */
 JNIEXPORT jbyteArray JNICALL Java_com_seassoon_encrypt_Encrypt_encrypt
-  (JNIEnv * _env, jobject _obj, jbyteArray _buf, jbyteArray _key,jbyteArray _keyorg);
-
-JNIEXPORT jbyteArray JNICALL Java_com_seassoon_encrypt_Encrypt_decrypt
-  (JNIEnv * _env, jobject _obj, jbyteArray _buf, jbyteArray _key, jbyteArray _keyorg);
+  (JNIEnv * _env, jobject _obj, jbyteArray _buf, jbyteArray _enckey,jbyteArray _keyorg);
+//
+//JNIEXPORT jbyteArray JNICALL Java_com_seassoon_encrypt_Encrypt_decrypt
+//  (JNIEnv * _env, jobject _obj, jbyteArray _buf, jbyteArray _deckey, jbyteArray _keyorg);
 
 #ifdef __cplusplus
 }
