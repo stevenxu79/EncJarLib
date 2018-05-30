@@ -22,6 +22,9 @@ decrypt.o: decrypt.cpp
 
 com_seassoon_encrypt_Encrypt.o: com_seassoon_encrypt_Encrypt.cpp com_seassoon_encrypt_Encrypt.h
 	$(CC) $(INCLUDEDIR) -c com_seassoon_encrypt_Encrypt.cpp
+
+com_seassoon_encrypt_EncryptJar.o: com_seassoon_encrypt_EncryptJar.cpp com_seassoon_encrypt_EncryptJar.h
+	$(CC) $(INCLUDEDIR) -c com_seassoon_encrypt_EncryptJar.cpp	
 	
 .PHONY:clean
 clean:
